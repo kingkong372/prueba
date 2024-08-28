@@ -1,0 +1,130 @@
+><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos de Aniversario</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-image: url('fondo2.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        h3 {
+            color: #eb3590;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        #photo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1;
+        }
+        #photo-container img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ff69b4;
+            transform: rotate(45deg);
+            animation: float 6s ease-in infinite;
+            opacity: 0.7;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+        .heart::after {
+            left: 25px;
+            top: 0;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        #hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nuestras Memorias</h1>
+    <h3>feliz aniversario mi negra hermosa
+    </h3>
+       <h4>09/25/2022</h4>
+    <div id="photo-container">
+        <!-- Agrega aquí tus imágenes personalizadas -->
+        <img src="imagen1.jpg" alt="Foto 1">
+        <img src="Imagen2.jpg" alt="Foto 2">
+        <img src="Imagen3.jpg" alt="Foto 3">
+        <img src="imagen5.jpg" alt="Foto 3">
+    </div>
+
+    <h1>LO QUE SIENTO POR TI</h1>
+
+    <div id="hearts-container"></div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 3 + 3}s`; // Duración entre 3 y 6 segundos
+            document.getElementById('hearts-container').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000); // Eliminar el corazón después de 6 segundos
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
+
